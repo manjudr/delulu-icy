@@ -365,16 +365,45 @@ ul,ol{list-style:none}
 }
 
 /* Flavour colours live here, not in inline style attributes. */
-.chip:nth-child(1){--c1:#C9B3DC;--c2:#A98CC4}
-.chip:nth-child(2){--c1:#BFD3A8;--c2:#8FB077}
-.chip:nth-child(3){--c1:#F3C9CE;--c2:#E29AA6}
-.chip:nth-child(4){--c1:#F7E7C8;--c2:#E3C591}
-.chip:nth-child(5){--c1:#B9CFA4;--c2:#7E9B6A}
-.chip:nth-child(6){--c1:#D8C3B1;--c2:#B2917A}
-.chip:nth-child(7){--c1:#E7D3EC;--c2:#C3A4D3}
+.chip:nth-child(1){--c1:#C9B3DC;--c2:#A98CC4;--s1:#9B79B8;--s2:#7C589B}
+.chip:nth-child(2){--c1:#BFD3A8;--c2:#8FB077;--s1:#7FA463;--s2:#618547}
+.chip:nth-child(3){--c1:#F3C9CE;--c2:#E29AA6;--s1:#E38C9B;--s2:#C56979}
+.chip:nth-child(4){--c1:#F7E7C8;--c2:#E3C591;--s1:#CE9F55;--s2:#AC7F38}
+.chip:nth-child(5){--c1:#B9CFA4;--c2:#7E9B6A;--s1:#6F9159;--s2:#54723F}
+.chip:nth-child(6){--c1:#D8C3B1;--c2:#B2917A;--s1:#8D6A50;--s2:#6B4D38}
+.chip:nth-child(7){--c1:#E7D3EC;--c2:#C3A4D3;--s1:#A981C0;--s2:#8A61A2}
 .chip:hover{transform:translateY(-8px);box-shadow:0 26px 50px -22px rgba(31,26,29,.42)}
+
+/* The scoop. Same cone-and-three-scoops motif as the favicon, blown up — the
+   cards carry the brand mark rather than photography we don't have. Tints are
+   plain white/ink alphas so one drawing reads correctly on all seven grounds. */
+.chip__art{
+  position:absolute;left:50%;top:41%;translate:-50% -50%;
+  height:54%;width:auto;pointer-events:none;z-index:0;
+  animation:scoop-float 7s ease-in-out infinite;
+}
+/* Every fill is opaque. Translucent shapes stacked over a coloured card turn to
+   mud, and the mud differs per flavour — solid tones keep all seven consistent. */
+.art-sh{fill:rgba(31,26,29,.13)}
+.art-cone{fill:#C08E55}
+.art-rim{fill:#D7A871}
+.art-waffle{fill:none;stroke:#A0713F;stroke-width:1.6;stroke-linecap:round;opacity:.85}
+.art-shade{fill:var(--s2)}
+.art-scoop{fill:var(--s1)}
+.art-gl{fill:rgba(255,255,255,.55)}
+.art-heart{fill:var(--s2)}
+@keyframes scoop-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+/* Offset the drift so the rail never bobs in unison. */
+.chip:nth-child(2) .chip__art{animation-delay:-1.1s}
+.chip:nth-child(3) .chip__art{animation-delay:-2.2s}
+.chip:nth-child(4) .chip__art{animation-delay:-3.3s}
+.chip:nth-child(5) .chip__art{animation-delay:-4.4s}
+.chip:nth-child(6) .chip__art{animation-delay:-5.5s}
+.chip:nth-child(7) .chip__art{animation-delay:-6.6s}
+
 .chip__n{position:absolute;top:clamp(1.1rem,2vw,1.8rem);left:clamp(1.3rem,2.2vw,2rem);
-  font-size:var(--t-eyebrow);letter-spacing:.34em;opacity:.55}
+  font-size:var(--t-eyebrow);letter-spacing:.34em;opacity:.55;z-index:1}
+.chip h3,.chip p{position:relative;z-index:1}
 .chip h3{font-size:clamp(1.15rem,.9rem + .9vw,1.7rem);font-weight:500;letter-spacing:-.02em;line-height:1.1}
 .chip p{font-size:clamp(.82rem,.76rem + .2vw,.95rem);font-weight:300;opacity:.7;margin-top:.3rem}
 .rail__hint{width:min(100% - (var(--pad)*2),var(--maxw));margin-inline:auto;
