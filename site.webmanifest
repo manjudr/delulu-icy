@@ -1,0 +1,13 @@
+{
+  "name": "Delulu Icy",
+  "short_name": "Delulu Icy",
+  "description": "Deliciously delusional. Ice cream, shakes and sundaes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF5EC",
+  "theme_color": "#FBF5EC",
+  "icons": [
+    { "src": "/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
