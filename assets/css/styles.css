@@ -355,11 +355,23 @@ ul,ol{list-style:none}
   width:clamp(220px,64vw,340px);
   height:clamp(293px,85.33vw,453px);
   border-radius:clamp(18px,2vw,28px);padding:clamp(1.3rem,2.2vw,2rem);
-  background:linear-gradient(158deg,var(--c1),var(--c2));
+  /* Solid colour first: if the gradient or the custom properties ever fail
+     to resolve, the card is still a card and not a transparent box. */
+  background-color:var(--c1,#C9B3DC);
+  background-image:linear-gradient(158deg,var(--c1,#C9B3DC),var(--c2,#A98CC4));
   color:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;
   position:relative;isolation:isolate;
   transition:transform .6s var(--ease),box-shadow .6s var(--ease);
 }
+
+/* Flavour colours live here, not in inline style attributes. */
+.chip:nth-child(1){--c1:#C9B3DC;--c2:#A98CC4}
+.chip:nth-child(2){--c1:#BFD3A8;--c2:#8FB077}
+.chip:nth-child(3){--c1:#F3C9CE;--c2:#E29AA6}
+.chip:nth-child(4){--c1:#F7E7C8;--c2:#E3C591}
+.chip:nth-child(5){--c1:#B9CFA4;--c2:#7E9B6A}
+.chip:nth-child(6){--c1:#D8C3B1;--c2:#B2917A}
+.chip:nth-child(7){--c1:#E7D3EC;--c2:#C3A4D3}
 .chip:hover{transform:translateY(-8px);box-shadow:0 26px 50px -22px rgba(31,26,29,.42)}
 .chip__n{position:absolute;top:clamp(1.1rem,2vw,1.8rem);left:clamp(1.3rem,2.2vw,2rem);
   font-size:var(--t-eyebrow);letter-spacing:.34em;opacity:.55}
