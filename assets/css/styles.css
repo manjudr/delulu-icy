@@ -342,13 +342,18 @@ ul,ol{list-style:none}
 .rail{
   display:flex;gap:clamp(.9rem,1.6vw,1.6rem);
   overflow-x:auto;scroll-snap-type:x mandatory;
+  align-items:flex-start;              /* never stretch — see .chip sizing below */
   padding-inline:var(--pad);padding-bottom:1.6rem;
   scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
 }
 .rail::-webkit-scrollbar{display:none}
 .chip{
   scroll-snap-align:center;flex:0 0 auto;
-  width:clamp(220px,64vw,340px);aspect-ratio:3/4;
+  /* Width AND height are stated outright. Sizing a flex item by aspect-ratio
+     alone makes its cross size circular, and WebKit resolves that to zero —
+     which silently empties the whole rail. The ratio stays 3:4. */
+  width:clamp(220px,64vw,340px);
+  height:clamp(293px,85.33vw,453px);
   border-radius:clamp(18px,2vw,28px);padding:clamp(1.3rem,2.2vw,2rem);
   background:linear-gradient(158deg,var(--c1),var(--c2));
   color:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;
